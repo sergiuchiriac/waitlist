@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { sendEmail } from '@/lib/resend';
-import EmailTemplate from '@/lib/EmailTemplate';
-import { ReactElement } from 'react';
+import { EmailTemplate } from '@/lib/EmailTemplate';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -26,7 +25,7 @@ export async function POST(request: Request) {
       to: email || '',
       subject: 'Welcome to the Waitlist!',
       text: 'Welcome to the Waitlist!',
-      react: EmailTemplate({ referralCode: data.referral_code }) as ReactElement,
+      react: EmailTemplate({ referralCode: data.referral_code }),
     });
 
     return NextResponse.json({ 

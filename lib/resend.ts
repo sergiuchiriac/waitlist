@@ -1,5 +1,3 @@
-"use client";
-
 import { Resend } from 'resend';
 
 
@@ -23,9 +21,9 @@ export const sendEmail = async ({
     react 
 }: EmailParams) => {
     await resend.emails.send({
-        from: 'The Next Big Thing <onboarding@resend.dev>',
+        from: 'The Next Big Thing <support@verceltemplates.com>',
         to,
-        reply_to: replyTo,
+        replyTo,
         subject,
         text,
         html,
